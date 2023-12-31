@@ -1,0 +1,29 @@
+---
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import WhatsappIcon from "../components/icons/Whatsapp.astro";
+
+const { class: className } = Astro.props;
+---
+
+<nav class={`flex gap-4 mt-8 flex-wrap ${className}`}>
+  <SocialPill href="https://www.linkedin.com/in/josecienty/">
+    <LinkedInIcon class="size-4" />
+     LinkedIn
+  </SocialPill>
+  <SocialPill href="https://github.com/josecienty">
+    <GitHubIcon class="size-4" />
+     GitHub
+  </SocialPill>
+  <SocialPill href="mailto:argelloestigarribia.josantonio@gmail.com">
+    <MailIcon class="size-4" />
+     Correo
+  </SocialPill>
+
+  <SocialPill href="https://wa.me/595981920088">
+    <WhatsappIcon class="size-4" />
+     Whatsapp
+  </SocialPill>
+</nav>

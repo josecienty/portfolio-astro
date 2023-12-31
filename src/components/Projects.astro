@@ -1,9 +1,26 @@
 ---
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
+import NextJS from "./icons/NextJS.astro";
+import VueJS from "./icons/Vue.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Laravel from "./icons/Laravel.astro";
 
 const TAGS = {
   NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-black text-white",
+    icon: Laravel,
+  },
+  VUE: {
+    name: "Vue.js",
+    class: "bg-black text-white",
+    icon: VueJS,
+  },
+  REACT: {
     name: "Next.js",
     class: "bg-black text-white",
     icon: NextJS,
@@ -13,18 +30,17 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
-}
+};
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "Aruba WEB",
     description:
-      "Created from scratch with Next.js and Tailwind CSS. It's a library with SVG logos from the most popular brands. Optimized for SEO and performance.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Reserva servicios de belleza y bienestar a domicilio o en salones cercanos. Encuentra profesionales confiables y disfruta de tratamientos de calidad sin complicaciones..",
+    link: "https://getaruba.com/",
+    image: "/projects/aruba.webp",
+    tags: [TAGS.LARAVEL, TAGS.VUE, TAGS.TAILWIND],
   },
-]
+];
 ---
 
 {
@@ -38,7 +54,7 @@ const PROJECTS = [
         {tags.map((tag) => (
           <li>
             <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1.5 px-2.5 border border-white/10 hover:scale-110 transition cursor-pointer`}
             >
               <tag.icon class="size-4" />
               {tag.name}
@@ -48,7 +64,7 @@ const PROJECTS = [
       </ul>
       <img
         loading="lazy"
-        class="rounded shadow-2xl shadow-white/10 aspect-video"
+        class="my-4 rounded-lg shadow-2xl shadow-white/10 aspect-video"
         src={image}
         alt={`Captura de pantalla del proyecto ${image}`}
       />
