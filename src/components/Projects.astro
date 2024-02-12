@@ -25,6 +25,11 @@ const TAGS = {
     class: "bg-black text-white",
     icon: NextJS,
   },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
   TAILWIND: {
     name: "Tailwind CSS",
     class: "bg-[#003159] text-white",
@@ -40,34 +45,45 @@ const PROJECTS = [
     image: "/projects/aruba.webp",
     tags: [TAGS.LARAVEL, TAGS.VUE, TAGS.TAILWIND],
   },
+  {
+    title: "Sitio Web de Qmbia Base",
+    description:
+      "Una landing page diseñada y desarrollada para un grupo de cumbia villera de Paraguay, utilizando las tecnologías Astro y Tailwind CSS. Integra los elementos visuales y estructura intuitiva, además de una optima velocidad de carga...",
+    link: "https://qmbiabase.com/",
+    image: "/projects/qmbiabase.webp",
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+  },
 ];
 ---
 
 {
   PROJECTS.map(({ image, title, description, tags }) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-        {title}
-      </h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1.5 px-2.5 border border-white/10 hover:scale-110 transition cursor-pointer`}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        loading="lazy"
-        class="my-4 rounded-lg shadow-2xl shadow-white/10 aspect-video"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
-      />
-    </article>
+    <>
+      <article>
+        <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+          {title}
+        </h3>
+        <p class="text-lg mb-4 text-pretty">{description}</p>
+        <ul class="flex gap-x-2 flex-row mb-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1.5 px-2.5 border border-white/10 hover:scale-110 transition cursor-pointer`}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <img
+          loading="lazy"
+          class="my-2 mb-8 rounded-lg shadow-2xl shadow-white/10 aspect-video"
+          src={image}
+          alt={`Captura de pantalla del proyecto ${image}`}
+        />
+      </article>
+      <hr class="mb-4 border-1 border-gray-800" />
+    </>
   ))
 }
