@@ -8,6 +8,7 @@ import CodeIcon from "../components/icons/Code.astro";
 import Projects from "../components/Projects.astro";
 import ContactoIcons from "../components/ContactoIcons.astro";
 import Contacto from "../components/Contacto.astro";
+import WhatsappButton from "../components/WhatsappButton.astro";
 ---
 
 <Layout
@@ -15,9 +16,9 @@ import Contacto from "../components/Contacto.astro";
   description="Contrata a José para crear tu aplicación web o móvil. Desarrollador Web. Especializado en crear aplicaciones únicas."
 >
   <main class="px-4" id="sobre-mi">
-    <SectionContainer class="py-44 pb-32">
+    <SectionContainer class="py-32 pb-44">
       <img
-        class="rounded-full size-12 mb-4"
+        class="rounded-full size-20 mb-4"
         src="/josedev.webp"
         alt="José Argüello Photo"
       />
@@ -31,7 +32,7 @@ import Contacto from "../components/Contacto.astro";
           rel="noopener"
           class="hidden md:flex justify-center items-center"
         >
-          <Badge>Disponible para Freelance</Badge>
+          <Badge>Fullstack</Badge>
         </a>
       </h1>
       <h2
@@ -40,16 +41,46 @@ import Contacto from "../components/Contacto.astro";
         <span>+7 años de experiencia.</span><span
           class="text-yellow-800 dark:text-yellow-200"
         >
-          Desarrollador Web, Desktop y Mobile</span
+          Desarrollador Web, Escritorio y Móvil</span
         >
-         .<span class="text-red-800 dark:text-red-200">
+        .<span class="text-red-800 dark:text-red-200">
           Desde Caacupé, Paraguay</span
         >.
         <span class="text-sky-800 dark:text-sky-200"
-          >Especializado en crear aplicaciones únicas.</span
+          >Enfocado en desarrollar aplicaciones unicas.</span
         >
       </h2>
       <ContactoIcons />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+      >
+        <Briefcase class="size-7" />
+        Sobre Mi
+      </h2>
+      <p>
+        Mi nombre es
+        <strong>José Antonio Argüello Estigarribia</strong>, licenciado en
+        Análisis de Sistemas, desarrollador con experiencia en web como movil, y
+        escritorio.
+      </p>
+      <br />
+      <p>
+        Eh trabajado con sitios web desde <strong
+          >Landing Page hasta e-commerce</strong
+        >, donde eh integrando múltiples medios de pagos, así como metodos de
+        validación mediante tareas programadas.
+      </p>
+      <br />
+      <p>
+        Tengo experiencia con lenguajes de programación PHP, Javascript, Java y
+        Python. Así también como multiples frameworks de los mismo como React,
+        Vue Js, Laravel, Django, etc.
+      </p>
+      <br />
+      <p>Cada desarrollo es un desafió y mi objetivo es superarlo.</p>
     </SectionContainer>
 
     <SectionContainer id="experiencia">
@@ -57,7 +88,7 @@ import Contacto from "../components/Contacto.astro";
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
       >
         <Briefcase class="size-7" />
-         Experiencia laboral
+        Experiencia
       </h2>
       <Experience />
     </SectionContainer>
@@ -67,7 +98,7 @@ import Contacto from "../components/Contacto.astro";
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
       >
         <CodeIcon class="size-7" />
-         Proyectos
+        Proyectos
       </h2>
       <Projects />
     </SectionContainer>
@@ -77,10 +108,11 @@ import Contacto from "../components/Contacto.astro";
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
       >
         <CodeIcon class="size-7" />
-         Contacto
+        Contacto
       </h2>
       <Contacto />
       <ContactoIcons class="text-center justify-center" />
     </SectionContainer>
+    <WhatsappButton />
   </main>
 </Layout>
