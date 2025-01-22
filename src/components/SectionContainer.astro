@@ -1,11 +1,23 @@
 ---
-const { class: className, id } = Astro.props;
+type Props = {
+  class?: string;
+  id?: string;
+  fullpage?: boolean;
+  verticalCenter?: boolean;
+};
+
+const { class: className, id, fullpage, verticalCenter }: Props = Astro.props;
+
+const styles = {
+  fullpage: "min-h-screen py-5 fullpage",
+  verticalCenter: "flex items-center justify-center",
+};
 ---
 
 <section
   id={id}
   data-section={id}
-  class={`section ${className} w-full mx-auto lg:w-[740px] pb-24 min-h-screen`}
+  class={`section ${className} w-full mx-auto lg:w-[740px] pb-24 ${fullpage ? styles.fullpage : ""} ${verticalCenter ? styles.verticalCenter : ""}`}
 >
   <slot />
 </section>

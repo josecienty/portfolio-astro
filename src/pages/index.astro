@@ -9,121 +9,24 @@ import Projects from "../components/Projects.astro";
 import ContactoIcons from "../components/ContactoIcons.astro";
 import Contacto from "../components/Contacto.astro";
 import WhatsappButton from "../components/WhatsappButton.astro";
+import Presentation from "../sections/Presentation.astro";
+import SobreMi from "../sections/SobreMi.astro";
 ---
-
-<script>
-  let currentSection = 0; // Índice de la sección actual
-  const sections = document.querySelectorAll("section"); // Seleccionar todas las secciones
-
-  function scrollToSection(index: number) {
-    // Asegúrate de que el índice esté dentro del rango de secciones
-    if (index >= 0 && index < sections.length) {
-      sections[index].scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave a la sección deseada
-    }
-  }
-
-  window.addEventListener("wheel", (event) => {
-    // Verifica si el usuario está cerca del final de la sección actual
-    const currentSectionElement = sections[currentSection];
-    const scrollTop = window.scrollY || window.pageYOffset;
-    const sectionBottom =
-      currentSectionElement.offsetTop + currentSectionElement.clientHeight;
-
-    // Detectar la visibilidad de la siguiente sección
-    const nextSectionVisible =
-      scrollTop + window.innerHeight > sectionBottom - 100; // Ajusta el valor de 100 según sea necesario
-
-    if (event.deltaY > 0 && nextSectionVisible) {
-      // Si se hace scroll hacia abajo y la siguiente sección es visible
-      currentSection++; // Cambia a la siguiente sección
-    } else if (event.deltaY < 0 && currentSection > 0) {
-      // Si se hace scroll hacia arriba
-      currentSection--; // Cambia a la sección anterior
-    }
-
-    // Asegúrate de que currentSection esté dentro de los límites
-    currentSection = Math.max(0, Math.min(currentSection, sections.length - 1));
-
-    scrollToSection(currentSection); // Llama a la función para desplazarse a la sección
-    event.preventDefault(); // Evita el comportamiento de scroll predeterminado del navegador
-  });
-</script>
-
+<script src="../scripts/showSection"></script>
 <Layout
   title="Porfolio de José Argüello - Desarrollador y Programador Web con varios años experiencia"
   description="Contrata a José para crear tu aplicación web o móvil. Desarrollador Web. Especializado en crear aplicaciones únicas."
 >
   <main class="px-4 fullpage" id="sobre-mi">
-    <SectionContainer class="py-32 pb-44">
-      <img
-        class="rounded-full size-20 mb-4"
-        src="/josedev.webp"
-        alt="José Argüello Photo"
-      />
-      <h1
-        class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
-      >
-        Hola, soy José
-        <a
-          href="https://linkedin.com/in/josecienty"
-          target="_blank"
-          rel="noopener"
-          class="hidden md:flex justify-center items-center"
-        >
-          <Badge>Fullstack</Badge>
-        </a>
-      </h1>
-      <h2
-        class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
-      >
-        <span>+7 años de experiencia.</span><span
-          class="text-yellow-800 dark:text-yellow-200"
-        >
-          Desarrollador Web, Escritorio y Móvil</span
-        >
-        .<span class="text-red-800 dark:text-red-200">
-          Desde Caacupé, Paraguay</span
-        >.
-        <span class="text-sky-800 dark:text-sky-200"
-          >Enfocado en desarrollar aplicaciones unicas.</span
-        >
-      </h2>
-      <ContactoIcons />
+    <SectionContainer fullpage verticalCenter>
+      <Presentation />
     </SectionContainer>
 
-    <SectionContainer id="sobre-mi" class="flex justify-center">
-      <div class="my-auto">
-        <h2
-          class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
-        >
-          <Briefcase class="size-7" />
-          Sobre Mi
-        </h2>
-        <p>
-          Mi nombre es
-          <strong>José Antonio Argüello Estigarribia</strong>, licenciado en
-          Análisis de Sistemas, desarrollador con experiencia en web como movil,
-          y escritorio.
-        </p>
-        <br />
-        <p>
-          Eh trabajado con sitios web desde <strong
-            >Landing Page hasta e-commerce</strong
-          >, donde eh integrando múltiples medios de pagos, así como metodos de
-          validación mediante tareas programadas.
-        </p>
-        <br />
-        <p>
-          Tengo experiencia con lenguajes de programación PHP, Javascript, Java
-          y Python. Así también como multiples frameworks de los mismo como
-          React, Vue Js, Laravel, Django, etc.
-        </p>
-        <br />
-        <p>Cada desarrollo es un desafió y mi objetivo es superarlo.</p>
-      </div>
+    <SectionContainer id="sobre-mi" fullpage verticalCenter>
+      <SobreMi />
     </SectionContainer>
 
-    <SectionContainer id="experiencia">
+    <SectionContainer id="experiencia" fullpage verticalCenter>
       <div class="lg:pt-20 mt-10">
         <h2
           class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
