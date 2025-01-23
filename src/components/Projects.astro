@@ -5,6 +5,7 @@ import Tailwind from "./icons/Tailwind.astro";
 import Laravel from "./icons/Laravel.astro";
 import Wordpres from "./icons/Wordpres.astro";
 import AstroIcon from "./icons/AstroIcon.astro";
+import Bootstrap from "./icons/Bootstrap.astro";
 
 const TAGS = {
   NEXT: {
@@ -41,6 +42,11 @@ const TAGS = {
     name: "Wordpress",
     class: "bg-black text-white",
     icon: Wordpres,
+  },
+  BOOTSTRAP:{
+    name: "Bootstrap",
+    class: " text-white",
+    icon: Bootstrap,
   }
 };
 const PROJECTS = [
@@ -74,7 +80,7 @@ const PROJECTS = [
       "Una landing page diseñada y desarrollada para un grupo de cumbia villera de Paraguay, utilizando las tecnologías Astro y Tailwind CSS. Integra los elementos visuales y estructura intuitiva, además de una optima velocidad de carga...",
     link: "https://beainsumos.uy",
     image: "/projects/bea.webp",
-    tags: [TAGS.LARAVEL, TAGS.TAILWIND],
+    tags: [TAGS.LARAVEL, TAGS.BOOTSTRAP],
   },
 ];
 ---
