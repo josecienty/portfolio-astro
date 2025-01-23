@@ -82,7 +82,6 @@ window.addEventListener("wheel", (event) => {
             }
             break;
     }
-    console.log(currentSection);
    
     return;
 });

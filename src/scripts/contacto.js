@@ -11,6 +11,8 @@ const nombre = form.querySelector('input[name="nombre"]');
 const btn = form.querySelector('button[type="submit"]');
 const btnLoad = form.querySelector('button[disabled]');
 
+butterup.options.toastLife = 5000;
+
 const loading = (isLoading) => {
     if (isLoading) {
         btn.classList.add('hidden');
@@ -35,16 +37,23 @@ const resetForm = () => {
 
 resetForm();
 
+const notify = ({ title, message, type }) => {
+    butterup.toast({
+        title: title,
+        message: message,
+        type: type,
+        location: 'top-right',
+        icon: true,
+        toastLife: 5000,
+    });
+}
+
 const validateForm = () => {
     if (email.value.trim().length === 0 || mensaje.value.trim().length === 0 || nombre.value.trim().length === 0) {
-        butterup.toast({
+        notify({
             title: 'Complete los campos',
             message: 'Todos los campos son obligatorios',
-            location: 'top-right',
-            dismissable: true,
-            type: 'error',
-            icon: true,
-            toastLife: 5000
+            type: 'error'
         });
         return false;
     }
@@ -72,28 +81,20 @@ form.addEventListener('submit', (e) => {
     ).then(
         (response) => {
             console.log("Correo enviado con éxito", response);
-            butterup.toast({
+            notify({
                 title: 'Correo enviado',
                 message: 'Se ha enviado su correo, me pongo en contacto con usted a la brevedad',
-                location: 'top-right',
-                dismissable: true,
-                type: 'success',
-                icon: true,
-                toastLife: 5000
+                type: 'success'
             });
             resetForm();
         },
         (error) => {
             console.error(error);
-            butterup.toast({
+            notify({
                 title: 'Error',
                 message: 'No se pudo enviar el correo, intente de nuevo más tarde',
-                location: 'top-right',
-                dismissable: true,
-                type: 'error',
-                icon: true,
-                toastLife: 5000
-            });
+                type: 'error'
+            })
         }
     ).finally(() => {
         loading(false);
