@@ -48,6 +48,7 @@ const validateForm = () => {
         });
         return false;
     }
+    return true;
 }
 
 form.addEventListener('submit', (e) => {
