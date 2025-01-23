@@ -3,6 +3,8 @@ import NextJS from "./icons/NextJS.astro";
 import VueJS from "./icons/Vue.astro";
 import Tailwind from "./icons/Tailwind.astro";
 import Laravel from "./icons/Laravel.astro";
+import Wordpres from "./icons/Wordpres.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
 
 const TAGS = {
   NEXT: {
@@ -28,13 +30,18 @@ const TAGS = {
   ASTRO: {
     name: "Astro",
     class: "bg-black text-white",
-    icon: NextJS,
+    icon: AstroIcon,
   },
   TAILWIND: {
     name: "Tailwind CSS",
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+  WORDPRESS: {
+    name: "Wordpress",
+    class: "bg-black text-white",
+    icon: Wordpres,
+  }
 };
 const PROJECTS = [
   {
@@ -59,7 +66,7 @@ const PROJECTS = [
       "Una landing page diseñada y desarrollada para un grupo de cumbia villera de Paraguay, utilizando las tecnologías Astro y Tailwind CSS. Integra los elementos visuales y estructura intuitiva, además de una optima velocidad de carga...",
     link: "https://idesa.com.py/blog",
     image: "/projects/idesa.webp",
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    tags: [TAGS.WORDPRESS],
   },
   {
     title: "Bea Insumos",
@@ -72,7 +79,7 @@ const PROJECTS = [
 ];
 ---
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
   {
     PROJECTS.map(({ image, title, description, link, tags }) => (
       <a href={link} target="_blank">
