@@ -12,12 +12,13 @@ import WhatsappButton from "../components/WhatsappButton.astro";
 import Presentation from "../sections/Presentation.astro";
 import SobreMi from "../sections/SobreMi.astro";
 ---
+
 <script src="../scripts/showSection"></script>
 <Layout
   title="Porfolio de José Argüello - Desarrollador y Programador Web con varios años experiencia"
   description="Contrata a José para crear tu aplicación web o móvil. Desarrollador Web. Especializado en crear aplicaciones únicas."
 >
-  <main class="px-4 fullpage" id="sobre-mi">
+  <main class="px-4 fullpage">
     <SectionContainer fullpage verticalCenter>
       <Presentation />
     </SectionContainer>
@@ -38,15 +39,17 @@ import SobreMi from "../sections/SobreMi.astro";
       </div>
     </SectionContainer>
 
-    <SectionContainer id="proyectos" class="">
+    <SectionContainer id="proyectos" container class="">
       <div class="lg:pt-20 mt-10">
-        <h2
-          class="text-3xl font-semibold flex gap-x-3 items-center text-black/80 dark:text-white/80"
-        >
-          <CodeIcon class="size-7" />
-          Proyectos
-        </h2>
-        <p class="mb-6">Algunos proyectos recientes</p>
+        <div class="lg:w-[740px] mx-auto mb-4">
+          <h2
+            class="text-3xl font-semibold flex gap-x-3 items-center text-black/80 dark:text-white/80"
+          >
+            <CodeIcon class="size-7" />
+            Proyectos
+          </h2>
+          <p class="mb-8">Algunos proyectos y contribuciones.</p>
+        </div>
         <Projects />
       </div>
     </SectionContainer>

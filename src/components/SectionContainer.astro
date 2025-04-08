@@ -4,20 +4,28 @@ type Props = {
   id?: string;
   fullpage?: boolean;
   verticalCenter?: boolean;
+  container?: boolean;
 };
 
-const { class: className, id, fullpage, verticalCenter }: Props = Astro.props;
+const {
+  class: className,
+  id,
+  fullpage,
+  verticalCenter,
+  container: isContainer,
+}: Props = Astro.props;
 
 const styles = {
-  fullpage: "min-h-screen py-5 fullpage",
-  verticalCenter: "flex items-center justify-center",
+  fullpage: fullpage ? "min-h-screen py-5 fullpage" : "",
+  verticalCenter: verticalCenter ? "flex items-center justify-center" : "",
+  container: isContainer ? "lg:w-[1500px] lg:px-10" : "lg:w-[740px]",
 };
 ---
 
 <section
   id={id}
   data-section={id}
-  class={`section ${className} w-full mx-auto lg:w-[740px] pb-24 ${fullpage ? styles.fullpage : ""} ${verticalCenter ? styles.verticalCenter : ""}`}
+  class={`section ${className} w-full mx-auto ${styles.container} pb-24 ${ styles.fullpage} ${styles.verticalCenter}`}
 >
   <slot />
 </section>

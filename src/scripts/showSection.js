@@ -1,4 +1,6 @@
 let currentSection = 0;
+let isScrolling = false;
+
 const sections = document.querySelectorAll("section");
 
 document.documentElement.scrollIntoView({
@@ -15,6 +17,9 @@ function scrollToSection(index) {
         } else {
             sections[index].scrollIntoView({ behavior: "smooth" });
         }
+        setTimeout(() => {
+            isScrolling = false;
+        },500);
     }
 }
 
@@ -51,6 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
 window.addEventListener("wheel", (event) => {
+    if(isScrolling){
+        event.preventDefault();
+        return;
+    }
     if (sections.length === 0 || currentSection > sections.length - 1 ) return;
 
     // ? Validamos que acción ejecuta el scroll
@@ -69,6 +78,7 @@ window.addEventListener("wheel", (event) => {
                         sections[currentSection].classList.contains('fullpage')));
 
             if (puedeSaltar) {
+                isScrolling = true;
                 currentSection++;
                 scrollToSection(currentSection);
                 event.preventDefault();
@@ -76,6 +86,7 @@ window.addEventListener("wheel", (event) => {
             break;
         case 'sube':
             if (currentSection > 0 && sections[currentSection - 1].classList.contains('fullpage')) {
+                isScrolling = true;
                 currentSection--;
                 scrollToSection(currentSection);
                 event.preventDefault();
@@ -84,4 +95,4 @@ window.addEventListener("wheel", (event) => {
     }
    
     return;
-});
+},{passive: false});

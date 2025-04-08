@@ -6,6 +6,10 @@ import Laravel from "./icons/Laravel.astro";
 import Wordpres from "./icons/Wordpres.astro";
 import AstroIcon from "./icons/AstroIcon.astro";
 import Bootstrap from "./icons/Bootstrap.astro";
+import Flutter from "./icons/Flutter.astro";
+import MaterialUI from "./icons/MaterialUI.astro";
+import Php from "./icons/Php.astro";
+import JavaScript from "./icons/JavaScript.astro";
 
 const TAGS = {
   NEXT: {
@@ -47,45 +51,75 @@ const TAGS = {
     name: "Bootstrap",
     class: " text-white",
     icon: Bootstrap,
+  },
+  FLUTTER:{
+    name: "Flutter",
+    class: "",
+    icon: Flutter,
+  },
+  MATERIALUI:{
+    name: "MaterialUi",
+    class: "",
+    icon: MaterialUI,
+  },
+  PHP:{
+    name: "MaterialUi",
+    class: "",
+    icon: Php,
+  },
+  JAVASCRIPT:{
+    name: "Javascript",
+    class: "",
+    icon: JavaScript,
   }
 };
 const PROJECTS = [
   {
     title: "Aruba WEB",
-    description:
-      "Reserva servicios de belleza y bienestar a domicilio o en salones cercanos. Encuentra profesionales confiables y disfruta de tratamientos de calidad sin complicaciones..",
+    description: "Implementación de un nuevo diseño y reestructuración de datos con el objetivo de unificar varios paises a un único servidor web.",
     link: "https://getaruba.com/",
     image: "/projects/aruba.webp",
     tags: [TAGS.LARAVEL, TAGS.VUE, TAGS.TAILWIND],
   },
   {
     title: "Sitio Web de Qmbia Base",
-    description:
-      "Una landing page diseñada y desarrollada para un grupo de cumbia villera de Paraguay, utilizando las tecnologías Astro y Tailwind CSS. Integra los elementos visuales y estructura intuitiva, además de una optima velocidad de carga...",
+    description: "Landing Website para promoción del grupo músical de Paraguay.",
     link: "https://qmbiabase.com/",
     image: "/projects/qmbiabase.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
   {
     title: "Blog IDESA",
-    description:
-      "Una landing page diseñada y desarrollada para un grupo de cumbia villera de Paraguay, utilizando las tecnologías Astro y Tailwind CSS. Integra los elementos visuales y estructura intuitiva, además de una optima velocidad de carga...",
+    description: "Sitio de Noticias referentes a la empresa 'Inmobiliaria del Este'.",
     link: "https://idesa.com.py/blog",
     image: "/projects/idesa.webp",
     tags: [TAGS.WORDPRESS],
   },
   {
     title: "Bea Insumos",
-    description:
-      "Una landing page diseñada y desarrollada para un grupo de cumbia villera de Paraguay, utilizando las tecnologías Astro y Tailwind CSS. Integra los elementos visuales y estructura intuitiva, además de una optima velocidad de carga...",
+    description: "Implementación de medio de pago 'Plexo'.",
     link: "https://beainsumos.uy",
     image: "/projects/bea.webp",
     tags: [TAGS.LARAVEL, TAGS.BOOTSTRAP],
   },
+  {
+    title: "Acapuedo",
+    description: "Contribución con el desarrollo frontend de la aplicación.",
+    link: "https://beainsumos.uy",
+    image: "/projects/acapuedo.webp",
+    tags: [TAGS.VUE, TAGS.FLUTTER, TAGS.MATERIALUI],
+  },
+  {
+    title: "Tupi Marketplace",
+    description: "Contribución con el desarrollo y mantenimiento del e-commerce.",
+    link: "https://tupi.com.py",
+    image: "/projects/tupi.webp",
+    tags: [TAGS.PHP, TAGS.BOOTSTRAP, TAGS.JAVASCRIPT],
+  },
 ];
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
   {
     PROJECTS.map(({ image, title, description, link, tags }) => (
       <a href={link} target="_blank">
@@ -93,7 +127,6 @@ const PROJECTS = [
           <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
             {title}
           </h3>
-          {/* <p class="text-lg mb-4 text-pretty">{description}</p> */}
           <ul class="flex gap-x-2 flex-row mb-2">
             {tags.map((tag) => (
               <li>
@@ -108,10 +141,12 @@ const PROJECTS = [
           </ul>
           <img
             loading="lazy"
-            class="my-2 mb-8 rounded-lg shadow-2xl shadow-white/10 aspect-video cursor-pointer hover:scale-105 transition"
+            class="my-2 rounded-lg shadow-2xl shadow-white/10 aspect-video cursor-pointer hover:scale-105 transition"
             src={image}
             alt={`Captura de pantalla del proyecto ${image}`}
           />
+          <p class="text-sm mb-4 text-pretty">{description}</p> 
+
         </article>
         {/* <hr class="mb-4 border-1 border-gray-800" /> */}
       </a>
