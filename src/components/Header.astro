@@ -1,5 +1,5 @@
 ---
-const classBTN = "hover:bg-white/10 px-6 py-2 transition";
+const classBTN = "hover:bg-white/15 px-7 py-3 transition";
 ---
 
 <header
@@ -13,14 +13,17 @@ const classBTN = "hover:bg-white/10 px-6 py-2 transition";
   `}
 >
   <nav
+    id="topbar"
     class={`
-      border border-none rounded-full
+      border border-none rounded-lg
       flex flex-row items-center
       bg-neutral-200 dark:bg-black/50
       backdrop-blur-2xl overflow-hidden
-      shadow-xl shadow-slate-800
+      shadow-xl shadow-green-800/50
     `}
   >
+    <!-- shadow-slate-800 -->
+    <a class={classBTN + " bg-white/15"} href="#inicio">Inicio</a>
     <a class={classBTN} href="#sobre-mi">Sobre mí</a>
     <a class={classBTN} href="#experiencia">Experiencia</a>
     <a class={classBTN} href="#proyectos">Proyectos</a>

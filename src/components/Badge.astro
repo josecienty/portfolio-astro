@@ -1,5 +1,19 @@
-<span
-  class="text-xs font-medium me-2 px-2.5 py-0.5 rounded bg-blue-600 text-white dark:bg-blue-900 dark:text-blue-300"
->
+---
+import ChevronForward from "./icons/ChevronForward.astro";
+
+type Props = {
+  color?: "blue" | "green" | "yellow";
+};
+const { color = "blue" } = Astro.props;
+const colors = {
+  green: 'bg-[#10B981] text-gray-800',
+  blue: 'bg-[#0077B5] text-sky-100',
+  yellow: 'bg-yellow-500',
+}
+const styleSheet = `flex text-xs font-medium me-2 px-2.5 py-0.5 rounded   ${colors[color]} hover:scale-110 transition font-semibold cursor-pointer shadow-sm`;
+---
+
+<span class={styleSheet}>
+  <ChevronForward class="size-4 -ml-1 -mr-0.5" />
   <slot />
 </span>

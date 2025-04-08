@@ -19,7 +19,7 @@ function scrollToSection(index) {
         }
         setTimeout(() => {
             isScrolling = false;
-        },500);
+        },200);
     }
 }
 
