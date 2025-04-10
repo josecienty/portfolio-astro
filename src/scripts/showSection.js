@@ -27,11 +27,23 @@ if (!document.location.hash?.length) {
 }
 
 //? Para no mostrar #inicio
-window.addEventListener('hashchange', function (a) {
-    if (document.location.hash == '#inicio') {
+window.addEventListener('hashchange', async function (a) {
+    const hash = document.location.hash; 
+    if (hash == '#inicio') {
+        currentSection = 0;
         history.replaceState(null, '', '/');
         scrollToSection(0);
+        return;
     }
+
+    const index = await Array.from(sections).findIndex(
+        item => '#' + item.id === hash && item.classList.contains('fullpage')
+    );
+    if (index >= 0) {
+        currentSection = index;
+        scrollToSection(index);
+    }
+
 });
 
 function scrollToSection(index) {
@@ -91,6 +103,7 @@ window.addEventListener("wheel", (event) => {
         event.preventDefault();
         return;
     }
+    debugger;
     if (sections.length === 0 || currentSection > sections.length - 1) return;
 
     // ? Validamos que acción ejecuta el scroll
@@ -102,8 +115,8 @@ window.addEventListener("wheel", (event) => {
 
     switch (getAction(event)) {
         case 'baja'://? Para ver el siguiente
-            const nextSectionVisible = scrollTop + window.innerHeight > sectionBottom - 100; // Ajusta el valor de 100 según sea necesario
-            const puedeSaltar = nextSectionVisible && currentSection < sections.length - 1 &&
+            // const nextSectionVisible = scrollTop + window.innerHeight > sectionBottom - 100; // Ajusta el valor de 100 según sea necesario
+            const puedeSaltar =  currentSection < sections.length - 1 &&
                 (sections[currentSection + 1].classList.contains('fullpage') ||
                     (!sections[currentSection + 1].classList.contains('fullpage') &&
                         sections[currentSection].classList.contains('fullpage')));
