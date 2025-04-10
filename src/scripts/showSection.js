@@ -103,7 +103,6 @@ window.addEventListener("wheel", (event) => {
         event.preventDefault();
         return;
     }
-    debugger;
     if (sections.length === 0 || currentSection > sections.length - 1) return;
 
     // ? Validamos que acción ejecuta el scroll

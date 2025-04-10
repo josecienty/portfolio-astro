@@ -77,14 +77,14 @@ const PROJECTS = [
   {
     title: "Aruba WEB",
     description: "Implementación de un nuevo diseño y reestructuración de datos con el objetivo de unificar varios paises a un único servidor web.",
-    link: "https://getaruba.com/",
+    link: "#",
     image: "/projects/aruba.webp",
     tags: [TAGS.LARAVEL, TAGS.VUE, TAGS.TAILWIND],
   },
   {
     title: "Sitio Web de Qmbia Base",
     description: "Landing Website para promoción del grupo músical de Paraguay.",
-    link: "https://qmbiabase.com/",
+    link: "#",
     image: "/projects/qmbiabase.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
@@ -118,8 +118,8 @@ const PROJECTS = [
   },
 ];
 ---
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<script  src="../scripts/enlace"></script>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="projects">
   {
     PROJECTS.map(({ image, title, description, link, tags }) => (
       <a href={link} target="_blank">
