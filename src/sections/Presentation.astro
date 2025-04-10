@@ -20,9 +20,12 @@ import ContactoIcons from "../components/ContactoIcons.astro";
             rel="noopener"
             class="hidden md:flex flex-col items-end gap-2"
         >
-            <Badge color="green">Desarrollador</Badge>
-
-            <Badge>Analista de Sistemas</Badge>
+            <div data-aos="fade-left" data-aos-delay="1300">
+                <Badge color="green">Desarrollador</Badge>
+            </div>
+            <div data-aos="fade-left" data-aos-delay="1000">
+                <Badge>Analista de Sistemas</Badge>
+            </div>
         </a>
     </h1>
     <h2
@@ -37,7 +40,8 @@ import ContactoIcons from "../components/ContactoIcons.astro";
             Desde Caacupé - Paraguay</span
         >.
         <span class="text-sky-800 dark:text-sky-200"
-            >Me enfoco en desarrollar soluciones únicas, funcionales y orientadas al usuario.</span
+            >Me enfoco en desarrollar soluciones únicas, funcionales y
+            orientadas al usuario.</span
         >
     </h2>
     <ContactoIcons />
