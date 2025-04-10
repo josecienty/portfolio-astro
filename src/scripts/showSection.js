@@ -1,3 +1,8 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 let currentSection = 0;
 let isScrolling = false;
 
@@ -15,7 +20,10 @@ if (!document.location.hash?.length) {
     );
     // Se registra en el current index para que
     // Funcione los eventos al cambio de hash
-    if (index >= 0) currentSection = index;
+    if (index >= 0) {
+        currentSection = index;
+        scrollToSection(index);
+    }
 }
 
 //? Para no mostrar #inicio
