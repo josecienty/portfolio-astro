@@ -47,50 +47,53 @@ const TAGS = {
     class: "bg-black text-white",
     icon: Wordpres,
   },
-  BOOTSTRAP:{
+  BOOTSTRAP: {
     name: "Bootstrap",
     class: " text-white",
     icon: Bootstrap,
   },
-  FLUTTER:{
+  FLUTTER: {
     name: "Flutter",
     class: "",
     icon: Flutter,
   },
-  MATERIALUI:{
+  MATERIALUI: {
     name: "MaterialUi",
     class: "",
     icon: MaterialUI,
   },
-  PHP:{
+  PHP: {
     name: "MaterialUi",
     class: "",
     icon: Php,
   },
-  JAVASCRIPT:{
+  JAVASCRIPT: {
     name: "Javascript",
     class: "",
     icon: JavaScript,
-  }
+  },
 };
 const PROJECTS = [
   {
     title: "Aruba WEB",
-    description: "Implementación de un nuevo diseño y reestructuración de datos con el objetivo de unificar varios paises a un único servidor web.",
+    description:
+      "Implementación de un nuevo diseño y reestructuración de datos con el objetivo de unificar varios paises a un único servidor web.",
     link: "#",
     image: "/projects/aruba.webp",
     tags: [TAGS.LARAVEL, TAGS.VUE, TAGS.TAILWIND],
   },
   {
     title: "Sitio Web de Qmbia Base",
-    description: "Landing Website para promoción del grupo músical de Paraguay.",
+    description:
+      "Landing Website para promoción del grupo músical de Paraguay.",
     link: "#",
     image: "/projects/qmbiabase.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
   {
     title: "Blog IDESA",
-    description: "Sitio de Noticias referentes a la empresa 'Inmobiliaria del Este'.",
+    description:
+      "Sitio de Noticias referentes a la empresa 'Inmobiliaria del Este'.",
     link: "https://idesa.com.py/blog",
     image: "/projects/idesa.webp",
     tags: [TAGS.WORDPRESS],
@@ -111,14 +114,16 @@ const PROJECTS = [
   },
   {
     title: "Tupi Marketplace",
-    description: "Contribución con el desarrollo y mantenimiento del e-commerce.",
+    description:
+      "Contribución con el desarrollo y mantenimiento del e-commerce.",
     link: "https://tupi.com.py",
     image: "/projects/tupi.webp",
     tags: [TAGS.PHP, TAGS.BOOTSTRAP, TAGS.JAVASCRIPT],
   },
 ];
 ---
-<script  src="../scripts/enlace"></script>
+
+<script src="../scripts/enlace"></script>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="projects">
   {
     PROJECTS.map(({ image, title, description, link, tags }) => (
@@ -145,8 +150,7 @@ const PROJECTS = [
             src={image}
             alt={`Captura de pantalla del proyecto ${image}`}
           />
-          <p class="text-sm mb-4 text-pretty">{description}</p> 
-
+          <p class="text-sm mb-4 text-pretty">{description}</p>
         </article>
         {/* <hr class="mb-4 border-1 border-gray-800" /> */}
       </a>
