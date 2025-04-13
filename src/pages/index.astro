@@ -34,7 +34,7 @@ import SobreMi from "../sections/SobreMi.astro";
     width: 100vw;
     max-height: 100vh;
   }
-  body{
+  body {
     overflow-x: hidden;
   }
 </style>
@@ -73,21 +73,40 @@ import SobreMi from "../sections/SobreMi.astro";
             <CodeIcon class="size-7" />
             Es una parte de mi portafolio
           </h2>
-          <p class="mb-8">Te muestro algunos proyectos que confiaron en mis habilidades y contribuciones.</p>
+          <p class="mb-8">
+            Te muestro algunos proyectos que confiaron en mis habilidades y
+            contribuciones.
+          </p>
         </div>
         <Projects />
       </div>
     </SectionContainer>
 
-    <SectionContainer id="contacto">
-      <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
-      >
-        <CodeIcon class="size-7" />
-        Contacto
-      </h2>
-      <Contacto />
-      <ContactoIcons class="text-center justify-center" />
+    <SectionContainer container id="contacto">
+      <div class="grid grid-cols-3 grap-4">
+        <div class="px-4 text-balance">
+          <h2
+            class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+          >
+            <CodeIcon class="size-7" />
+            Contacto
+          </h2>
+          <p data-aos="zoom-in-down">
+            Si tu empresa, startup o equipo necesita reforzar su desarrollo web
+            o backend, te ofrezco colaboración profesional con foco en
+            soluciones eficientes, código limpio y entregas a tiempo.
+          </p>
+          <br />
+          <p data-aos="zoom-in-down" data-aos-delay="200">
+            Trabajo con modelos flexibles: fee mensual, banco de horas o por
+            proyecto. Completá el formulario y hablemos.
+          </p>
+        </div>
+        <div class="col-span-2">
+          <Contacto />
+          <ContactoIcons class="text-center justify-center" />
+        </div>
+      </div>
     </SectionContainer>
     <WhatsappButton />
   </main>
