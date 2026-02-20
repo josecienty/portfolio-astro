@@ -1,157 +1,217 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-AOS.init();
+function initFullpageScroll() {
+  AOS.init();
 
-let currentSection = 0;
-let isScrolling = false;
+  const sections = [...document.querySelectorAll("section")];
+  const topbar = document.querySelector("#topbar");
 
-const sections = document.querySelectorAll("section");
-//? Para topBar
-const styleActive = "bg-[#10B981]/50"; //'bg-white/15';
-const topbar = document.querySelector("#topbar");
+  if (!sections.length) return;
 
-//? Si no tiene hash ir siempre arriba
-if (!document.location.hash?.length) {
-  document.documentElement.scrollIntoView({ top: 0 });
-} else {
-  const index = Array.from(sections).findIndex(
-    (item) =>
-      "#" + item.id === document.location.hash &&
-      item.classList.contains("fullpage")
-  );
-  // Se registra en el current index para que
-  // Funcione los eventos al cambio de hash
-  if (index >= 0) {
-    currentSection = index;
-    scrollToSection(index);
-  }
-}
+  let currentSection = 0;
+  let isScrolling = false;
+  let scrollTimeout = null;
 
-//? Para no mostrar #inicio
-window.addEventListener("hashchange", async function (a) {
-  const hash = document.location.hash;
-  if (hash == "#inicio") {
-    currentSection = 0;
-    history.replaceState(null, "", "/");
-    scrollToSection(0);
-    return;
+  const STYLE_ACTIVE = "bg-[#10B981]/50";
+  const SCROLL_LOCK_TIME = 700;
+
+  /* =========================
+    Helpers
+  ========================= */
+
+  function lockScroll() {
+    isScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, SCROLL_LOCK_TIME);
   }
 
-  const index = await Array.from(sections).findIndex(
-    (item) => "#" + item.id === hash && item.classList.contains("fullpage")
-  );
-  if (index >= 0) {
-    currentSection = index;
-    scrollToSection(index);
-  }
-});
+  function scrollToSection(index) {
+    if (index < 0 || index >= sections.length) return;
 
-function scrollToSection(index) {
-  if (index >= 0 && index < sections.length) {
-    if (index == 0) {
-      document.documentElement.scrollIntoView({
+    lockScroll();
+
+    if (index === 0) {
+      window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    } else {
-      sections[index].scrollIntoView({ behavior: "smooth" });
+      return;
     }
-    setTimeout(() => {
-      isScrolling = false;
-    }, 200);
-  }
-}
 
-function getAction(event) {
-  if (event.deltaY > 0) {
-    return "baja";
-  } else if (event.deltaY < 0) {
-    return "sube";
+    sections[index].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }
-}
 
-function calcularSeccion() {
-  sections.forEach((section, index) => {
-    if (section.getBoundingClientRect()) currentSection = index;
+  function goToHash(hash) {
+    const index = sections.findIndex(
+      (s) => "#" + s.id === hash
+    );
+
+    if (index >= 0) {
+      scrollToSection(index);
+    }
+  }
+
+  function getAction(event) {
+    if (event.deltaY > 0) return "down";
+    if (event.deltaY < 0) return "up";
+    return null;
+  }
+
+  /* =========================
+    HASH INIT
+  ========================= */
+
+  if (!location.hash) {
+    window.scrollTo({ top: 0 });
+  } else {
+    goToHash(location.hash);
+  }
+
+  window.addEventListener("hashchange", () => {
+    const hash = location.hash;
+
+    if (hash === "#inicio") {
+      history.replaceState(null, "", "/");
+      scrollToSection(0);
+      return;
+    }
+
+    goToHash(hash);
   });
-}
 
-document.addEventListener("DOMContentLoaded", () => {
+  /* =========================
+    INTERSECTION OBSERVER
+    (Fuente única de estado)
+  ========================= */
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const index = Array.from(sections).indexOf(entry.target); // Obtén el índice de la sección
+        if (!entry.isIntersecting) return;
 
-        //? Esto es para activar el topbar
-        topbar.children[index].classList.toggle(
-          styleActive,
-          entry.isIntersecting
-        );
+        const index = sections.indexOf(entry.target);
+        currentSection = index;
 
-        if (
-          entry.isIntersecting &&
-          !entry.target.classList.contains("fullpage")
-        ) {
-          currentSection = index;
+        if (topbar?.children[index]) {
+          [...topbar.children].forEach((item) =>
+            item.classList.remove(STYLE_ACTIVE)
+          );
+
+          topbar.children[index].classList.add(STYLE_ACTIVE);
         }
       });
     },
     {
-      threshold: 0.5,
+      threshold: 0.3,
     }
   );
 
   sections.forEach((section) => observer.observe(section));
-});
 
-window.addEventListener(
-  "wheel",
-  (event) => {
+  /* =========================
+    WHEEL CONTROL
+  ========================= */
+  let prevSection = null;
+
+  window.addEventListener(
+    "wheel",
+    (event) => {
+      if (isScrolling) {
+        event.preventDefault();
+        return;
+      }
+
+      const section = sections[currentSection];
+      const currentIsFullpage = section?.classList.contains("fullpage");
+
+      if (prevSection && !prevSection?.classList.contains("fullpage") && currentIsFullpage) {
+        prevSection = section;
+        event.preventDefault();
+        scrollToSection(currentSection);
+        return;
+      }
+
+      // Si no es fullpage → scroll normal
+      if (!currentIsFullpage) {
+        prevSection = section;
+        return;
+      }
+
+      prevSection = section;
+
+      const action = getAction(event);
+      if (!action) return;
+
+      if (action === "down") {
+        if (currentSection < sections.length - 1) {
+          event.preventDefault();
+          scrollToSection(currentSection + 1);
+        }
+      }
+
+      if (action === "up") {
+        if (currentSection > 0) {
+          event.preventDefault();
+          scrollToSection(currentSection - 1);
+        }
+      }
+    },
+    { passive: false }
+  );
+
+  /* =========================
+    KEYBOARD CONTROL
+  ========================= */
+
+  window.addEventListener("keydown", (evt) => {
     if (isScrolling) {
-      event.preventDefault();
+      evt.preventDefault();
       return;
     }
-    if (sections.length === 0 || currentSection > sections.length - 1) return;
 
-    // ? Validamos que acción ejecuta el scroll
-    const currentSectionElement = sections[currentSection];
-    const scrollTop = window.scrollY || window.pageYOffset;
-    const sectionBottom =
-      currentSectionElement.offsetTop + currentSectionElement.clientHeight;
+    const section = sections[currentSection];
+    const currentIsFullpage =
+      sections[currentSection]?.classList.contains("fullpage");
 
-    // Detectar la visibilidad de la siguiente sección
-
-    switch (getAction(event)) {
-      case "baja": //? Para ver el siguiente
-        // const nextSectionVisible = scrollTop + window.innerHeight > sectionBottom - 100; // Ajusta el valor de 100 según sea necesario
-        const puedeSaltar =
-          currentSection < sections.length - 1 &&
-          (sections[currentSection + 1].classList.contains("fullpage") ||
-            (!sections[currentSection + 1].classList.contains("fullpage") &&
-              sections[currentSection].classList.contains("fullpage")));
-
-        if (puedeSaltar) {
-          isScrolling = true;
-          currentSection++;
-          scrollToSection(currentSection);
-          event.preventDefault();
-        }
-        break;
-      case "sube":
-        if (
-          currentSection > 0 &&
-          sections[currentSection - 1].classList.contains("fullpage")
-        ) {
-          isScrolling = true;
-          currentSection--;
-          scrollToSection(currentSection);
-          event.preventDefault();
-        }
-        break;
+    if (prevSection && !prevSection?.classList.contains("fullpage") && currentIsFullpage) {
+      prevSection = section;
+      evt.preventDefault();
+      scrollToSection(currentSection);
+      return;
     }
 
-    return;
-  },
-  { passive: false }
-);
+    // Si no es fullpage → scroll normal
+    if (!currentIsFullpage) {
+      prevSection = section;
+      return;
+    }
+
+    prevSection = section;
+
+    if (evt.key === "ArrowDown") {
+      if (currentSection < sections.length - 1) {
+        evt.preventDefault();
+        scrollToSection(currentSection + 1);
+      }
+    }
+
+    if (evt.key === "ArrowUp") {
+      if (currentSection > 0) {
+        evt.preventDefault();
+        scrollToSection(currentSection - 1);
+      }
+    }
+  });
+}
+
+/* =========================
+  INIT
+========================= */
+
+document.addEventListener("DOMContentLoaded", initFullpageScroll);

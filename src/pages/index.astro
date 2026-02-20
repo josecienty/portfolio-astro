@@ -14,10 +14,11 @@ import SobreMi from "../sections/SobreMi.astro";
 ---
 
 <script src="../scripts/showSection"></script>
-<script src="../scripts/matrix"></script>
+<!-- <script src="../scripts/matrix"></script> -->
 
 <style>
-  #Matrix {
+  #Matrix { 
+  /* #canvas-container { */
     position: absolute;
     z-index: -2;
     opacity: 40%;
@@ -42,7 +43,14 @@ import SobreMi from "../sections/SobreMi.astro";
   title="José A. Argüello - Desarrollador Senior"
   description="Contrata a José para crear tu aplicación web o móvil. Desarrollador Web. Especializado en crear aplicaciones únicas."
 >
-  <canvas id="Matrix"></canvas>
+  <!-- <canvas id="canvas-container"></canvas> -->
+    <div id="canvas-container"></div>
+  
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <div class="loader">
+    <div class="loader-spinner"></div>
+  </div>
   <main class="px-4 fullpage">
     <SectionContainer id="inicio" fullpage verticalCenter>
       <Presentation />

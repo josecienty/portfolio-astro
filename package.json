@@ -20,6 +20,7 @@
     "emailjs-com": "^3.2.0",
     "fullpage.js": "^4.0.30",
     "tailwindcss": "3.4.0",
+    "three": "^0.183.1",
     "typescript": "5.3.3"
   },
   "devDependencies": {
