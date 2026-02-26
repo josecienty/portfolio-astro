@@ -6,6 +6,7 @@ import Experience from "../components/Experience.astro";
 import Briefcase from "../components/icons/Briefcase.astro";
 import CodeIcon from "../components/icons/Code.astro";
 import Projects from "../components/Projects.astro";
+import Contributions from "../components/Contributions.astro";
 import ContactoIcons from "../components/ContactoIcons.astro";
 import Contacto from "../components/Contacto.astro";
 import WhatsappButton from "../components/WhatsappButton.astro";
@@ -15,10 +16,9 @@ import SobreMi from "../sections/SobreMi.astro";
 
 <script src="../scripts/showSection"></script>
 <!-- <script src="../scripts/matrix"></script> -->
-
 <style>
-  #Matrix { 
-  /* #canvas-container { */
+  #Matrix {
+    /* #canvas-container { */
     position: absolute;
     z-index: -2;
     opacity: 40%;
@@ -44,8 +44,8 @@ import SobreMi from "../sections/SobreMi.astro";
   description="Contrata a José para crear tu aplicación web o móvil. Desarrollador Web. Especializado en crear aplicaciones únicas."
 >
   <!-- <canvas id="canvas-container"></canvas> -->
-    <div id="canvas-container"></div>
-  
+  <div id="canvas-container"></div>
+
   <div class="cursor-glow" id="cursorGlow"></div>
 
   <div class="loader">
@@ -72,7 +72,7 @@ import SobreMi from "../sections/SobreMi.astro";
       </div>
     </SectionContainer>
 
-    <SectionContainer id="proyectos" container class="">
+    <SectionContainer id="proyectos" container noPadding>
       <div class="lg:pt-20 mt-10">
         <div class="lg:w-[740px] mx-auto mb-4">
           <h2
@@ -83,11 +83,16 @@ import SobreMi from "../sections/SobreMi.astro";
           </h2>
           <p class="mb-8">
             Te muestro algunos proyectos que confiaron en mis habilidades y
-            contribuciones.
+            Contributions.
           </p>
         </div>
         <Projects />
       </div>
+    </SectionContainer>
+
+    <SectionContainer id="Contributions" container class="">
+        
+        <Contributions />
     </SectionContainer>
 
     <SectionContainer container id="contacto">

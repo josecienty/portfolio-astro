@@ -1,134 +1,20 @@
 ---
-import NextJS from "./icons/NextJS.astro";
-import VueJS from "./icons/Vue.astro";
-import Tailwind from "./icons/Tailwind.astro";
-import Laravel from "./icons/Laravel.astro";
-import Wordpres from "./icons/Wordpres.astro";
-import AstroIcon from "./icons/AstroIcon.astro";
-import Bootstrap from "./icons/Bootstrap.astro";
-import Flutter from "./icons/Flutter.astro";
-import MaterialUI from "./icons/MaterialUI.astro";
-import Php from "./icons/Php.astro";
-import JavaScript from "./icons/JavaScript.astro";
-
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  LARAVEL: {
-    name: "Laravel",
-    class: "bg-black text-white",
-    icon: Laravel,
-  },
-  VUE: {
-    name: "Vue.js",
-    class: "bg-black text-white",
-    icon: VueJS,
-  },
-  REACT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  ASTRO: {
-    name: "Astro",
-    class: "bg-black text-white",
-    icon: AstroIcon,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-  WORDPRESS: {
-    name: "Wordpress",
-    class: "bg-black text-white",
-    icon: Wordpres,
-  },
-  BOOTSTRAP: {
-    name: "Bootstrap",
-    class: " text-white",
-    icon: Bootstrap,
-  },
-  FLUTTER: {
-    name: "Flutter",
-    class: "",
-    icon: Flutter,
-  },
-  MATERIALUI: {
-    name: "MaterialUi",
-    class: "",
-    icon: MaterialUI,
-  },
-  PHP: {
-    name: "MaterialUi",
-    class: "",
-    icon: Php,
-  },
-  JAVASCRIPT: {
-    name: "Javascript",
-    class: "",
-    icon: JavaScript,
-  },
-};
-const PROJECTS = [
-  {
-    title: "Aruba WEB",
-    description:
-      "Implementación de un nuevo diseño y reestructuración de datos con el objetivo de unificar varios paises a un único servidor web.",
-    link: "#",
-    image: "/projects/aruba.webp",
-    tags: [TAGS.LARAVEL, TAGS.VUE, TAGS.TAILWIND],
-  },
-  {
-    title: "Sitio Web de Qmbia Base",
-    description:
-      "Landing Website para promoción del grupo músical de Paraguay.",
-    link: "#",
-    image: "/projects/qmbiabase.webp",
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
-  },
-  {
-    title: "Blog IDESA",
-    description:
-      "Sitio de Noticias referentes a la empresa 'Inmobiliaria del Este'.",
-    link: "https://idesa.com.py/blog",
-    image: "/projects/idesa.webp",
-    tags: [TAGS.WORDPRESS],
-  },
-  {
-    title: "Bea Insumos",
-    description: "Implementación de medio de pago 'Plexo'.",
-    link: "https://beainsumos.uy",
-    image: "/projects/bea.webp",
-    tags: [TAGS.LARAVEL, TAGS.BOOTSTRAP],
-  },
-  {
-    title: "Acapuedo",
-    description: "Contribución con el desarrollo frontend de la aplicación.",
-    link: "https://beainsumos.uy",
-    image: "/projects/acapuedo.webp",
-    tags: [TAGS.VUE, TAGS.FLUTTER, TAGS.MATERIALUI],
-  },
-  {
-    title: "Tupi Marketplace",
-    description:
-      "Contribución con el desarrollo y mantenimiento del e-commerce.",
-    link: "https://tupi.com.py",
-    image: "/projects/tupi.webp",
-    tags: [TAGS.PHP, TAGS.BOOTSTRAP, TAGS.JAVASCRIPT],
-  },
-];
+import { PROJECTS } from "./data/projects";
 ---
 
 <script src="../scripts/enlace"></script>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="projects">
+
+<div
+  class="grid grid-cols-1 md:grid-cols-3  2xl:grid-cols-4 gap-4"
+  id="projects"
+>
   {
     PROJECTS.map(({ image, title, description, link, tags }) => (
-      <div class="project-card py-4 px-2">
-        <a href={link} target="_blank">
+      <div class="project-card py-4 px-3">
+        <a
+          href={link && link !== "#" ? link : "javascript:void(0)"}
+          target={link && link !== "#" ? "_blank" : "_self"}
+        >
           <article>
             <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
               {title}

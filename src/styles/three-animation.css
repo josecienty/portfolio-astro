@@ -138,10 +138,10 @@ html {
 }
 
 .project-card {
-    background: var(--bg-card);
+    /* background: var(--bg-card); */
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
     transition: all 0.4s ease;
     transform-style: preserve-3d;
     perspective: 1000px;
@@ -150,7 +150,7 @@ html {
 .project-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary);
-    box-shadow: 0 20px 60px rgba(18, 105, 81, 0.2);
+    box-shadow: 0 20px 60px rgba(18, 105, 81, 0.5);
 }
 
 .project-image {
