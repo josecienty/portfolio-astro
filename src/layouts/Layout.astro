@@ -1,10 +1,11 @@
 ---
-import "@fontsource-variable/onest";
+// import "@fontsource-variable/onest";
 import "animate.css";
 import "../styles/three-animation.css";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Head from "./Head.astro";
 
 interface Props {
   title: string;
@@ -18,10 +19,12 @@ const { description, title } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <Head />
+    <!-- <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="generator" content={Astro.generator} /> -->
     <title>{title}</title>
   </head>
 
