@@ -1,0 +1,80 @@
+---
+const title = "José A. Argüello | Desarrollador Full Stack Senior - Paraguay";
+const description =
+    "Desarrollador Full Stack con +10 años de experiencia en PHP, Laravel, React, Vue.js y Node.js. Creador del SDK de Facturación Electrónica SIFEN. Disponible para proyectos freelance y colaboraciones remotas.";
+const url = "josearguello.dev";
+const image = `${url}josedev.png`;
+---
+
+<!-- Metadatos básicos -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="José Antonio Argüello Estigarribia" />
+<meta
+    name="keywords"
+    content="José Argüello, desarrollador full stack, desarrollador PHP Paraguay, Laravel developer, React developer, Vue.js, SDK SIFEN Paraguay, facturación electrónica Paraguay, desarrollador freelance Paraguay, Node.js developer"
+/>
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={url} />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta
+    property="og:image:alt"
+    content="Foto de perfil de José Argüello, Desarrollador Full Stack"
+/>
+<meta property="og:locale" content="es_PY" />
+<meta property="og:site_name" content="Portfolio de José Argüello" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} /> -->
+
+<!-- Datos estructurados (Schema.org) para Google -->
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "José Antonio Argüello Estigarribia",
+        url: url,
+        image: image,
+        jobTitle: "Desarrollador Full Stack Senior",
+        description: description,
+        address: {
+            "@type": "PostalAddress",
+            addressLocality: "Caacupé",
+            addressCountry: "PY",
+        },
+        sameAs: [
+            "https://www.linkedin.com/in/josecienty/",
+            "https://github.com/josecienty",
+        ],
+        knowsAbout: [
+            "PHP",
+            "Laravel",
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "Vue.js",
+            "React Native",
+            "Spring Boot",
+            "Django",
+            "Python",
+            "Node.js",
+            "SQL",
+            "NoSQL",
+        ],
+    })}
+/>

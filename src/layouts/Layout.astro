@@ -47,7 +47,9 @@ const { description, title } = Astro.props;
         }
       }
     </script>
-    <script src="../scripts/animationBg"></script>
+    <script>
+      import("../scripts/animationBg");
+    </script>
   </body>
 </html>
 
