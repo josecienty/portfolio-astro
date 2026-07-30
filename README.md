@@ -39,11 +39,12 @@ Astro destaca por generar sitios estáticos extremadamente rápidos y con excele
 /
 ├── public/              # Archivos estáticos
 ├── src/
-│   ├── components/      # Componentes reutilizables
-│   ├── layouts/         # Layouts principales
-│   ├── pages/           # Rutas del sitio
-│   ├── styles/          # Estilos globales
-│   └── content/         # Contenido dinámico (si aplica)
+│   ├── components/      # UI reutilizables y modulares
+│   ├── layouts/         # Plantillas estructurales
+│   ├── pages/           # Páginas de la aplicación
+│   ├── styles/          # Hojas de estilo globales
+│   ├── sections/        # Bloques completos de la interfaz
+│   └── scripts/         # Lógica JavaScript/TypeScript
 ├── astro.config.mjs
 ├── tailwind.config.mjs
 ├── tsconfig.json
